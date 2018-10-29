@@ -19,6 +19,7 @@ class Filter extends Component {
 
   moreInfo = () => {
     console.log("Showing Info From Foursquare API")
+    //this function should display more info on the map about the restaurant. 
   }
 
   render() {
