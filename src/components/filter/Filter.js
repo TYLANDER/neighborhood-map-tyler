@@ -17,10 +17,14 @@ class Filter extends Component {
     this.setState({items: updatedList});
   }
 
+  moreInfo = () => {
+    console.log("Showing Info From Foursquare API")
+  }
+
   render() {
     console.log(this.state)
     const items = this.state.items.map(location => {
-      return <li key={location.name}>{location.name}</li>
+      return <li key={location.name} onClick={this.moreInfo}>{location.name}</li>
     })
     return (
       <div className='filter-component'>

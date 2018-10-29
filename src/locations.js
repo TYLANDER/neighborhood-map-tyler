@@ -19,6 +19,11 @@ const locations = [
     lat: 37.7638966,
     lng: -122.471008,
     name: 'San Tung'
+  },
+  {
+    lat: 37.7962641,
+    lng: -122.4081484,
+    name: 'Bund Shanghai Restaurant'
   }
 ]
 
