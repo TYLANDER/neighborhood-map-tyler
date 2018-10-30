@@ -7,5 +7,7 @@ This app uses the Foursquare API for local information.
 
 Getting Started:
 clone this repository to your local device, then:
+
 ```cd neighborhood-map-tyler```
+
 ```$ npm run start```
