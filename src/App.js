@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Filter from './components/filter/Filter'
 import Map from './components/map/Map'
-import Marker from './components/Marker'
+import Marker from './components/marker/Marker'
 
 /* NEXT STEPS
 1. Add Filtering logic to map Markers ref: handleChangeBook(), "markers and list view should update accordingly in real time"
