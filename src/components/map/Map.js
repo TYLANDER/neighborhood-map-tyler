@@ -7,6 +7,7 @@ import Marker from '../marker/Marker'
 const googleMapKey = 'AIzaSyB1jeZYx7O8UR-TFm5K1e3ZBdkd5cEWcsw';
 
 class Map extends Component {
+
   static defaultProps = {
     center: {
       lat: 37.7775,

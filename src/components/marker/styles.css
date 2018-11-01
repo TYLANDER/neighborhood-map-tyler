@@ -19,3 +19,10 @@
     position: absolute;
     border-radius: 50%;
   }
+
+
+.tooltip-box {
+  width: 60px;
+  height: 60px;
+  background: #000000;
+}
