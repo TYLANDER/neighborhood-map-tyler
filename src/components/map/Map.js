@@ -17,7 +17,7 @@ class Map extends Component {
   };
 
   render() {
-    const Markers = locations.map(location => {
+    const Markers = this.props.filteredLocations.map(location => {
       return <Marker text={location.name} key={location.name} lat={location.lat} lng={location.lng}/>
     })
 
@@ -29,7 +29,6 @@ class Map extends Component {
           key: googleMapKey
         }} defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
         {Markers}
-
       </GoogleMapReact>
     </div>);
   }

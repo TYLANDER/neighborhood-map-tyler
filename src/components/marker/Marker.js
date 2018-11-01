@@ -3,6 +3,8 @@ import './styles.css'
 import Tippy from '@tippy.js/react'
 import 'tippy.js/dist/tippy.css'
 
+
+
 export class Marker extends React.Component {
   handleClick = () => {
     console.log('Pin clicked')
