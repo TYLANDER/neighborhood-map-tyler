@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@tippy.js/react": "^1.0.1",
+    "ajv": "^6.5.5",
+    "axios": "^0.18.0",
     "google-map-react": "^1.0.9",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",

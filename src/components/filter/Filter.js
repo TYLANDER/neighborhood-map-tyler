@@ -13,10 +13,11 @@ class Filter extends Component {
   moreInfo = () => {
     console.log("Showing Info From Foursquare API")
     //this function should display more info on the map about the restaurant.
+
   }
 
   render() {
-    console.log(this.props.filteredLocations);
+    console.log('hey hey, array', this.props.filteredLocations);
     const items = this.props.filteredLocations.map(location => {
       return <li key={location.name} onClick={this.moreInfo}>{location.name}</li>
     })
