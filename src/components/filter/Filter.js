@@ -6,15 +6,13 @@ import './styles.css';
 
 class Filter extends Component {
 
-  moreInfo = () => {
-    console.log("Showing Info From Foursquare API")
-    //this function should display more info on the map about the restaurant.
-
-  }
-
   render() {
+    console.log('selected loc: ', this.props.selectedLocation)
     const items = this.props.filteredLocations.map(location => {
-      return <li key={location.name} onClick={() => { this.props.setSelectedLocation(location) }}>{location.name}</li>
+      const selected = this.props.selectedLocation.name === location.name
+      const selectedClass = selected ? 'selected' : ''
+
+      return <li className={selectedClass} key={location.name} onClick={() => { this.props.setSelectedLocation(location) }}>{location.name}</li>
     })
     return (<div className='filter-component'>
       <div>

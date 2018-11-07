@@ -17,7 +17,8 @@ class Map extends Component {
 
   render() {
     const Markers = this.props.filteredLocations.map(location => {
-      return <Marker location={location} key={location.name} lat={location.lat} lng={location.lng} setSelectedLocation={this.props.setSelectedLocation}/>
+      const selected = this.props.selectedLocation.name === location.name
+      return <Marker selected={selected} location={location} key={location.name} lat={location.lat} lng={location.lng} setSelectedLocation={this.props.setSelectedLocation}/>
     })
 
     return (<div style={{

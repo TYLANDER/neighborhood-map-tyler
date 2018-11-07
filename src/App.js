@@ -16,7 +16,7 @@ class App extends Component {
     locations,
     filteredLocations: locations,
     venues: [],
-    selectedLocation: null
+    selectedLocation: {}
 
   }
 
@@ -62,9 +62,22 @@ class App extends Component {
   }
 
   render() {
+    const { selectedLocation, filteredLocations } = this.state
+
     return (<div className="App">
-      <Filter filteredLocations={this.state.filteredLocations} filterList={this.filterList} setSelectedLocation={this.setSelectedLocation}/>
-      <Map google={this.props.google} className='map' filteredLocations={this.state.filteredLocations} setSelectedLocation={this.setSelectedLocation}/>
+      <Filter 
+        filteredLocations={filteredLocations} 
+        filterList={this.filterList} 
+        setSelectedLocation={this.setSelectedLocation} 
+        selectedLocation={selectedLocation}
+      />
+      <Map 
+        google={this.props.google} 
+        className='map' 
+        filteredLocations={filteredLocations} 
+        setSelectedLocation={this.setSelectedLocation} 
+        selectedLocation={selectedLocation}
+      />
     </div>);
   }
 }
