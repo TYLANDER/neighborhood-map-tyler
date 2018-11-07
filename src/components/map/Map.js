@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './styles.css';
 import GoogleMapReact from 'google-map-react';
-import locations from '../../locations'
 import Marker from '../marker/Marker'
 
 const googleMapKey = 'AIzaSyB1jeZYx7O8UR-TFm5K1e3ZBdkd5cEWcsw';
@@ -18,7 +17,7 @@ class Map extends Component {
 
   render() {
     const Markers = this.props.filteredLocations.map(location => {
-      return <Marker text={location.name} key={location.name} lat={location.lat} lng={location.lng}/>
+      return <Marker location={location} key={location.name} lat={location.lat} lng={location.lng} setSelectedLocation={this.props.setSelectedLocation}/>
     })
 
     return (<div style={{

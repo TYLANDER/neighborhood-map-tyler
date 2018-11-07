@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import './styles.css';
-import locations from '../../locations'
 
-fetch('https://api.foursquare.com/v2/venues/explore?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=20180323&limit=1&ll=40.7243,-74.0018&query=coffee').then(function() {
-  console.log("Foursquare API fetch")
-}).catch(function() {
-  console.log("API Error")
-});
+
+
 
 class Filter extends Component {
 
@@ -17,9 +13,8 @@ class Filter extends Component {
   }
 
   render() {
-    console.log('hey hey, array', this.props.filteredLocations);
     const items = this.props.filteredLocations.map(location => {
-      return <li key={location.name} onClick={this.moreInfo}>{location.name}</li>
+      return <li key={location.name} onClick={() => { this.props.setSelectedLocation(location) }}>{location.name}</li>
     })
     return (<div className='filter-component'>
       <div>

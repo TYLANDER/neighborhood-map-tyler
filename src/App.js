@@ -15,7 +15,8 @@ class App extends Component {
   state = {
     locations,
     filteredLocations: locations,
-    markerInfo: locations
+    venues: [],
+    selectedLocation: null
 
   }
 
@@ -31,13 +32,12 @@ class App extends Component {
     this.setState({filteredLocations: updatedList});
   }
 
-  showMarkerInfo = (event) => {
-    var markerInfo = this.state.locations;
-    markerInfo = markerInfo.filter(function(item) {
-      return item.name.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
-    });
-    this.setState({markerInfo: locations})
+  setSelectedLocation = (location) => {
+    console.log('Set Selected Location: ', location)
+    this.setState({selectedLocation: location})
   }
+
+
 //pulling in the data from the foursquare API
   getVenues = () => {
     const endPoint = 'https://api.foursquare.com/v2/venues/explore'
@@ -46,29 +46,25 @@ class App extends Component {
       client_secret: "0OZ3RJX4CKQ2JYDOIN5NS3HPDJ0BACXBJ01THBE0NXU5MTE5",
       query: "food",
       near: "San Francisco, CA",
+      v: "20181107"
     }
 
     axios.get(endPoint + new URLSearchParams(parameters))
     .then(response => {
-      console.log(response, 'Axios response fired')
+      this.setState({
+        venues: response.data.response.groups[0].items
+      })
+      console.log(response.data.response.groups[0].items, 'Axios response fired')
     })
     .catch(error => {
       console.log("ERROR!! " + error)
     })
   }
-/*
-  locationInfo = (locations) => {
-    var tooltipContent = this.state.locations;
-    updateToolTip = tooltipContent.filter(function(item) {
-    });
-    this.setState({mapLocations: updatedList});
-  }
-  */
 
   render() {
     return (<div className="App">
-      <Filter filteredLocations={this.state.filteredLocations} filterList={this.filterList}/>
-      <Map google={this.props.google} className='map' filteredLocations={this.state.filteredLocations}/>
+      <Filter filteredLocations={this.state.filteredLocations} filterList={this.filterList} setSelectedLocation={this.setSelectedLocation}/>
+      <Map google={this.props.google} className='map' filteredLocations={this.state.filteredLocations} setSelectedLocation={this.setSelectedLocation}/>
     </div>);
   }
 }
