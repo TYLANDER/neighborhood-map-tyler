@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "NODE_ENV=production react-scripts start ",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run sw",
+    "sw": "workbox generate:sw --config-file=workbox.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

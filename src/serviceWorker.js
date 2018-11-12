@@ -65,6 +65,19 @@ function registerValidSW(swUrl, config) {
         installingWorker.onstatechange = () => {
           if (installingWorker.state === 'installed') {
             if (navigator.serviceWorker.controller) {
+              window.addEventListener('fetch', function(event) {
+                console.log("Fetch!")
+                event.respondWith(
+                  caches.match(event.request).then(function(resp) {
+                    return resp || fetch(event.request).then(function(response) {
+                      return caches.open('v1').then(function(cache) {
+                        cache.put(event.request, response.clone());
+                        return response;
+                      });  
+                    });
+                  })
+                );
+              });
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
