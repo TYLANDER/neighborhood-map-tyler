@@ -19,4 +19,3 @@ LocationInfo.propTypes ={
 }
 
 export default LocationInfo;
-  

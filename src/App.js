@@ -57,7 +57,7 @@ class App extends Component {
       })
     })
     .catch(error => {
-      console.log("ERROR!! " + error)
+      alert("ERROR!! " + error)
     })
   }
 
@@ -68,6 +68,7 @@ class App extends Component {
   }
 
   render() {
+
     const { selectedLocation, filteredLocations, foursquareVenueData } = this.state
 
     return (<div className="App">
