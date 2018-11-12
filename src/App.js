@@ -5,23 +5,20 @@ import Map from './components/map/Map'
 import locations from './locations'
 import axios from 'axios'
 
-/* HOMEWORK:
-1. Refactor Marker.js to create a LocationInfo.js component for the tooltip content prop.
-*/
-
 
 
 class App extends Component {
   state = {
     locations,
     filteredLocations: locations,
-    venues: [],
-    selectedLocation: {}
+    foursquareVenueData: [],
+    selectedLocation: {},
+
 
   }
 
   componentDidMount() {
-    this.getVenues()
+    this.getAllVenues()
   }
 
   filterList = (event) => {
@@ -33,36 +30,45 @@ class App extends Component {
   }
 
   setSelectedLocation = (location) => {
-    console.log('Set Selected Location: ', location)
     this.setState({selectedLocation: location})
   }
 
 
 //pulling in the data from the foursquare API
-  getVenues = () => {
-    const endPoint = 'https://api.foursquare.com/v2/venues/explore'
+  getVenue = (name) => {
+    const endPoint = 'https://api.foursquare.com/v2/venues/search?'
     const parameters = {
       client_id: "0RC1CRVJRVCWLETOSECTROX2YFKXKVGLYV5HJZGQYSZDSWBY",
       client_secret: "0OZ3RJX4CKQ2JYDOIN5NS3HPDJ0BACXBJ01THBE0NXU5MTE5",
-      query: "food",
+      query: name,
       near: "San Francisco, CA",
       v: "20181107"
     }
 
-    axios.get(endPoint + new URLSearchParams(parameters))
+    const url = endPoint + new URLSearchParams(parameters);
+    axios.get(url)
     .then(response => {
+      const venue = response.data.response.venues[0]
+      const venues = this.state.foursquareVenueData
+      venues.push(venue)
+
       this.setState({
-        venues: response.data.response.groups[0].items
+        foursquareVenueData: venues
       })
-      console.log(response.data.response.groups[0].items, 'Axios response fired')
     })
     .catch(error => {
       console.log("ERROR!! " + error)
     })
   }
 
+  getAllVenues = () => {
+    for (let i = 0; i < locations.length; i++) {
+      this.getVenue(locations[i].name)
+    }
+  }
+
   render() {
-    const { selectedLocation, filteredLocations } = this.state
+    const { selectedLocation, filteredLocations, foursquareVenueData } = this.state
 
     return (<div className="App">
       <Filter 
@@ -72,14 +78,20 @@ class App extends Component {
         selectedLocation={selectedLocation}
       />
       <Map 
-        google={this.props.google} 
+
         className='map' 
         filteredLocations={filteredLocations} 
         setSelectedLocation={this.setSelectedLocation} 
         selectedLocation={selectedLocation}
+        foursquareVenueData={foursquareVenueData}
       />
     </div>);
   }
 }
+
+App.propTypes ={
+
+}
+
 
 export default App;

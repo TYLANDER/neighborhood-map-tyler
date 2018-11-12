@@ -3,7 +3,7 @@ import './styles.css'
 import Tippy from '@tippy.js/react'
 import 'tippy.js/dist/tippy.css'
 import LocationInfo from '../locationInfo/LocationInfo'
-import tippy from 'tippy.js';
+import PropTypes from 'prop-types';
 
 
 
@@ -14,14 +14,13 @@ export class Marker extends React.Component {
 
   componentDidUpdate = (prevProps) => {
     if (this.props.selected && !prevProps.selected) {
-      console.log('should show tip for: ', this.props.location.name, this.tip)
       setTimeout(() => { this.tip.show() }, 0);
     }
 }
   render() {
     return <Tippy 
       trigger="click manual" 
-      content={<LocationInfo location={this.props.location}/>}
+      content={<LocationInfo location={this.props.location} foursquareData={this.props.foursquareData}/>}
       onCreate={tip => (this.tip = tip)}
     >
       <div 
@@ -30,6 +29,13 @@ export class Marker extends React.Component {
       />
     </Tippy>
   }
+}
+
+Marker.propTypes = {
+  setSelectedLocation: PropTypes.func,
+  location: PropTypes.object,
+  selected: PropTypes.bool,
+  name: PropTypes.string,
 }
 
 export default Marker

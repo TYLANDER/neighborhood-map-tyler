@@ -2,7 +2,7 @@ const locations = [
   {
     lat: 37.7775,
     lng: -122.4333,
-    name: 'Alamo Square Park'
+    name: 'Alamo Square'
   }, {
     lat: 37.7317511,
     lng: -122.453221,

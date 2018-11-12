@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './styles.css';
+import PropTypes from 'prop-types';
+
 
 
 
 
 class Filter extends Component {
-
   render() {
-    console.log('selected loc: ', this.props.selectedLocation)
     const items = this.props.filteredLocations.map(location => {
       const selected = this.props.selectedLocation.name === location.name
       const selectedClass = selected ? 'selected' : ''
@@ -25,5 +25,11 @@ class Filter extends Component {
     </div>);
   }
 }
+
+Filter.propTypes = {
+  filteredLocations: PropTypes.array,
+  selectedLocation: PropTypes.object,
+  filterList: PropTypes.func.isRequired
+};
 
 export default Filter;
