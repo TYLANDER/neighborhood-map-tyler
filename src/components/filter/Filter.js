@@ -18,7 +18,7 @@ class Filter extends Component {
       <div>
         <h1>FILTER AREA</h1>
         <input type='text' placeholder='filter dim sum' onChange={this.props.filterList}/>
-        <ul>
+        <ul className='filter-list'>
           {items}
         </ul>
       </div>

@@ -1,8 +1,27 @@
 .filter-component {
   width: 300px;
   background-color: grey;
+  padding: 1em;
 }
 
 .selected {
   color: red;
 }
+
+.filter-list {
+  list-style-type: none;
+  font-size: 1.1em;
+  padding: 0;
+  line-height: 1.4em;
+
+}
+
+@media (max-width: 776px) {
+  .filter-component {
+    width: 100%;
+    order: 2;
+    height: 300px;
+    box-sizing: border-box;
+  }
+}
+
