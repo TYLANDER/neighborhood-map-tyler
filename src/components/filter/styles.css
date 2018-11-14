@@ -16,6 +16,14 @@
 
 }
 
+.filter-list li {
+  cursor: pointer;
+}
+
+.filter-list li:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 776px) {
   .filter-component {
     width: 100%;

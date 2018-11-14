@@ -19,7 +19,7 @@ export class Marker extends React.Component {
 }
   render() {
     return <Tippy 
-      trigger="click manual" 
+      trigger="manual" 
       content={<LocationInfo location={this.props.location} foursquareData={this.props.foursquareData}/>}
       onCreate={tip => (this.tip = tip)}
     >

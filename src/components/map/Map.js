@@ -17,6 +17,8 @@ class Map extends Component {
   };
 
   render() {
+    const zoom = window.innerWidth < 776 ? 11.5 : this.props.zoom
+
     const Markers = this.props.filteredLocations.map(location => {
       const selected = this.props.selectedLocation.name === location.name
       const foursquareSingleLocation = this.props.foursquareVenueData.filter(venue => venue.name.includes(location.name)) 
@@ -34,7 +36,7 @@ class Map extends Component {
     return (<div className='map'>
       <GoogleMapReact bootstrapURLKeys={{
           key: googleMapKey
-        }} defaultCenter={this.props.center} defaultZoom={this.props.zoom}>
+        }} defaultCenter={this.props.center} defaultZoom={zoom}>
         {Markers}
       </GoogleMapReact>
     </div>);
