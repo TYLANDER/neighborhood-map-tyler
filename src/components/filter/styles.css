@@ -1,11 +1,11 @@
 .filter-component {
   width: 300px;
-  background-color: grey;
+  background-color: #F1F1D4;
   padding: 1em;
 }
 
 .selected {
-  color: red;
+  color: blueviolet;
 }
 
 .filter-list {

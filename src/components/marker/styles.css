@@ -21,8 +21,15 @@
   }
 
 
-.tooltip-box {
+/*.tooltip-box {
   width: 60px;
   height: 60px;
   background: #000000;
+}
+*/
+
+.tippy-tooltip.tyler-theme .tippy-backdrop{
+  border-radius: 0px;
+  background-color: grey;
+  padding-top: 2em;
 }

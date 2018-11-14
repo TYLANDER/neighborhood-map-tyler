@@ -6,6 +6,12 @@ import locations from './locations'
 import axios from 'axios'
 
 
+const foursquareAPIKeys = {
+  clientId: '0RC1CRVJRVCWLETOSECTROX2YFKXKVGLYV5HJZGQYSZDSWBY',
+  clientSecret: '0OZ3RJX4CKQ2JYDOIN5NS3HPDJ0BACXBJ01THBE0NXU5MTE5',
+  v: "20181107"
+}
+
 
 class App extends Component {
   state = {
@@ -38,27 +44,57 @@ class App extends Component {
   getVenue = (name) => {
     const endPoint = 'https://api.foursquare.com/v2/venues/search?'
     const parameters = {
-      client_id: "0RC1CRVJRVCWLETOSECTROX2YFKXKVGLYV5HJZGQYSZDSWBY",
-      client_secret: "0OZ3RJX4CKQ2JYDOIN5NS3HPDJ0BACXBJ01THBE0NXU5MTE5",
+      client_id: foursquareAPIKeys.clientId,
+      client_secret: foursquareAPIKeys.clientSecret,
       query: name,
       near: "San Francisco, CA",
-      v: "20181107"
+      v: foursquareAPIKeys.v
     }
 
     const url = endPoint + new URLSearchParams(parameters);
-    axios.get(url)
-    .then(response => {
-      const venue = response.data.response.venues[0]
-      const venues = this.state.foursquareVenueData
-      venues.push(venue)
 
-      this.setState({
-        foursquareVenueData: venues
+    let venue = ''
+
+    axios.get(url)
+      .then(response => {
+        venue = response.data.response.venues[0]
+        return this.getPhoto(venue.id)
+      }).then(photoUrl => {
+        venue.photoUrl = photoUrl
+        const venues = this.state.foursquareVenueData.slice()
+
+        venues.push(venue)
+
+        this.setState({
+          foursquareVenueData: venues
+        })
       })
-    })
-    .catch(error => {
-      alert("ERROR!! " + error)
-    })
+      .catch(error => {
+        alert("ERROR!! " + error)
+      })
+  }
+
+  getPhoto = (venueId) => {
+    const endPoint = 'https://api.foursquare.com/v2/venues/' + venueId + '/photos?'
+    const parameters = {
+      client_id: foursquareAPIKeys.clientId,
+      client_secret: foursquareAPIKeys.clientSecret,
+      v: foursquareAPIKeys.v
+    }
+
+    const url = endPoint + new URLSearchParams(parameters);
+
+    return axios.get(url)
+      .then(response => {
+        console.log('photo res', response)
+        const photoObj = response.data.response.photos.items[0]
+        const size = '200x200'
+        const photoUrl = photoObj.prefix + size + photoObj.suffix
+        return photoUrl
+      })
+      .catch(error => {
+        alert("ERROR!! " + error)
+      })
   }
 
   getAllVenues = () => {

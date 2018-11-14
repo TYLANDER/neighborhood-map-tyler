@@ -22,6 +22,7 @@ export class Marker extends React.Component {
       trigger="manual" 
       content={<LocationInfo location={this.props.location} foursquareData={this.props.foursquareData}/>}
       onCreate={tip => (this.tip = tip)}
+      theme = "tyler"
     >
       <div 
         className='pin' 

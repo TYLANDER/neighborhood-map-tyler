@@ -6,9 +6,11 @@ import PropTypes from 'prop-types';
 class LocationInfo extends Component {
     render() {
         console.log('Foursquare Data', this.props.foursquareData[0])
+        const venue = this.props.foursquareData[0]
         return <div>
+            { venue && <img src={venue.photoUrl}  /> }
             <div>{this.props.location.name}</div>
-            { this.props.foursquareData[0] && <div>{this.props.foursquareData[0].location.crossStreet}</div> }
+            { venue && <div>{venue.location.crossStreet}</div> }
         </div>
 
     }    
