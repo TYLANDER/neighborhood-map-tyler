@@ -74,3 +74,7 @@ workbox.routing.registerNavigationRoute("/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
+
+workbox.routing.registerRoute(
+  ''
+)

@@ -1,8 +1,8 @@
 const locations = [
   {
-    lat: 37.7775,
-    lng: -122.4333,
-    name: 'Alamo Square'
+    lat: 37.7839412,
+    lng: -122.4857798,
+    name: 'Dragon Beaux'
   }, {
     lat: 37.7317511,
     lng: -122.453221,
