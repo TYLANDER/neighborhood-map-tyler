@@ -8,7 +8,7 @@ class LocationInfo extends Component {
         console.log('Foursquare Data', this.props.foursquareData[0])
         const venue = this.props.foursquareData[0]
         return <div>
-            { venue && <img src={venue.photoUrl}  /> }
+            { venue && <img src={venue.photoUrl} alt="Smiley" /> }
             <div>{this.props.location.name}</div>
             { venue && <div>{venue.location.crossStreet}</div> }
         </div>
