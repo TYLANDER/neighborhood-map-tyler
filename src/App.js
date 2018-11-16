@@ -70,7 +70,7 @@ class App extends Component {
         })
       })
       .catch(error => {
-        alert("ERROR!! " + error)
+        console.log("ERROR!! " + error)
       })
   }
 
@@ -93,7 +93,7 @@ class App extends Component {
         return photoUrl
       })
       .catch(error => {
-        alert("ERROR!! " + error)
+        console.log("ERROR!! " + error)
       })
   }
 
