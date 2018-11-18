@@ -8,6 +8,11 @@ const googleMapKey = 'AIzaSyB1jeZYx7O8UR-TFm5K1e3ZBdkd5cEWcsw';
 
 class Map extends Component {
 
+  gm_authFailure = () => { 
+    let apiError = "No or invalid API key!"
+    document.getElementById('status').value = apiError; 
+   };
+
   static defaultProps = {
     center: {
       lat: 37.7775,

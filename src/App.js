@@ -115,7 +115,7 @@ class App extends Component {
         selectedLocation={selectedLocation}
       />
       <Map 
-
+        role="application"
         className='map' 
         filteredLocations={filteredLocations} 
         setSelectedLocation={this.setSelectedLocation} 
