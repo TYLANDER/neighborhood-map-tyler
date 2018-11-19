@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tippy.js/react": "^1.0.1",
+    "@tippy.js/react": "^1.1.0",
     "ajv": "^6.5.5",
     "axios": "^0.18.0",
-    "google-map-react": "^1.0.9",
+    "google-map-react": "^1.1.0",
     "prop-types": "^15.6.2",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-scripts": "2.0.5"
   },
   "scripts": {
