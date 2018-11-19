@@ -12,13 +12,13 @@ class Filter extends Component {
       const selected = this.props.selectedLocation.name === location.name
       const selectedClass = selected ? 'selected' : ''
 
-      return <li className={selectedClass} key={location.name} onClick={() => { this.props.setSelectedLocation(location) }}>{location.name}</li>
+      return <li className={selectedClass} tabindex="0" key={location.name} onClick={() => { this.props.setSelectedLocation(location) }}>{location.name}</li>
     })
     return (<div className='filter-component'>
       <div>
         <h1>FILTER AREA</h1>
-        <input type='text' placeholder='filter dim sum' onChange={this.props.filterList}/>
-        <ul className='filter-list'>
+        <input tabindex="1" type='text' placeholder='filter dim sum' onChange={this.props.filterList}/>
+        <ul className='filter-list'tabindex="2">
           {items}
         </ul>
       </div>

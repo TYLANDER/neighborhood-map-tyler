@@ -5,14 +5,14 @@ import Map from './components/map/Map'
 import locations from './locations'
 import axios from 'axios'
 
-
+//My Foursquare Keys
 const foursquareAPIKeys = {
   clientId: '0RC1CRVJRVCWLETOSECTROX2YFKXKVGLYV5HJZGQYSZDSWBY',
   clientSecret: '0OZ3RJX4CKQ2JYDOIN5NS3HPDJ0BACXBJ01THBE0NXU5MTE5',
   v: "20181107"
 }
 
-
+//The App Entry Point
 class App extends Component {
   state = {
     locations,
