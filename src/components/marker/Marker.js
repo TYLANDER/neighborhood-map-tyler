@@ -12,11 +12,21 @@ export class Marker extends React.Component {
    // this.showMarkerInfo()
   }
 
+  state = {
+    pinClass: "pin"
+  }
+
   componentDidUpdate = (prevProps) => {
-    if (this.props.selected && !prevProps.selected) {
+    const isMarkerSelected = this.props.selected && !prevProps.selected
+    const markerDeselect = prevProps.selected && !this.props.selected 
+    if (isMarkerSelected) {
       setTimeout(() => { this.tip.show() }, 0);
+      this.setState({pinClass: "pin animate"} )
+    } else if (markerDeselect){
+      this.setState({pinClass: "pin"})
     }
-}
+  }
+
   render() {
     return <Tippy 
       trigger="manual" 
@@ -25,8 +35,8 @@ export class Marker extends React.Component {
       theme = "tyler"
     >
       <div 
-        className='pin' 
-        onClick={() => this.props.setSelectedLocation(this.props.location) }
+        className={this.state.pinClass} 
+        onClick={ () => this.props.setSelectedLocation(this.props.location) }
       />
     </Tippy>
   }
