@@ -6,20 +6,21 @@ import PropTypes from 'prop-types';
 
 const googleMapKey = 'AIzaSyB1jeZYx7O8UR-TFm5K1e3ZBdkd5cEWcsw';
 
+
 class Map extends Component {
-
-  gm_authFailure = () => { 
-    let apiError = "No or invalid API key!"
-    document.getElementById('status').value = apiError; 
-   };
-
-  static defaultProps = {
+   static defaultProps = {
     center: {
       lat: 37.7775,
       lng: -122.4333
     },
     zoom: 13
   };
+
+  componentDidMount() {
+    window.gm_authFailure = () => { 
+      alert('Invalid API key!')
+     };
+  }
 
   render() {
     const zoom = window.innerWidth < 776 ? 11.5 : this.props.zoom
